@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
-import ws.idroid.broadcastreceivers.receiver.MyBroadcastReceiver;
+import ws.idroid.broadcastreceivers.receiver.*;
 
 public class BroadcastActivity extends AppCompatActivity {
 
@@ -13,6 +13,11 @@ public class BroadcastActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_broad_cast);
+
+        sendBroadcast();
+    }
+
+    private void sendBroadcast() {
         Button btnSend = findViewById(R.id.btn_send);
         btnSend.setOnClickListener(view -> {
             Intent i = new Intent();
@@ -23,9 +28,8 @@ public class BroadcastActivity extends AppCompatActivity {
 
         //Define the Receiver
         IntentFilter filter = new IntentFilter("com.example.Broadcast");
-        MyBroadcastReceiver receiver = new MyBroadcastReceiver();
+         MyBroadcastReceiver receiver = new MyBroadcastReceiver();
         registerReceiver(receiver, filter);
-        //unregisterReceiver(receiver);
-    }
 
+    }
 }
